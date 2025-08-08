@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Monitoring Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f8f0; color: #333; }
+        .container { max-width: 800px; margin: 50px auto; padding: 20px; text-align: center; background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { color: #006400; }
+        .weather-card { padding: 20px; border-radius: 8px; background-color: #e6f2e6; margin-top: 20px; }
+        .weather-icon { width: 80px; height: 80px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Your Agritech Dashboard</h1>
+        
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% elif weather %}
+            <div class="weather-card">
+                <h2>Current Weather in {{ weather.city }}</h2>
+                <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather Icon" class="weather-icon">
+                <p>Temperature: {{ weather.temperature }}°C</p>
+                <p>Conditions: {{ weather.description }}</p>
+            </div>
+        {% else %}
+            <p>Loading weather data...</p>
+        {% endif %}
+    </div>
+</body>
+</html>
